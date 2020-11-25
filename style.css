@@ -1,0 +1,43 @@
+body {
+    background-image: url("./Images/maxresdefault.jpg");
+    background-repeat: no-repeat;
+    position: fixed;
+}
+
+.character {
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-repeat: none;
+    background-size: cover;
+}
+
+#choice {
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-repeat: none;
+    background-size: cover;
+    position: fixed;
+    left: 400px;
+    top: 200px;
+}
+
+#opponent {
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-repeat: none;
+    background-size: cover;
+    position: fixed;
+    left: 400px;
+    top: 400px;
+}
+
+button {
+    color: white;
+    background-color: red;
+    position: fixed;
+    left: 450px;
+    top: 100px;
+}

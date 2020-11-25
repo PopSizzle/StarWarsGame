@@ -33,6 +33,30 @@ const MaceWindu = new Fighter("Mace Windu", "./Images/Mace.png", 120, 20, 20);
 let characters = [Yoda, Palpatine, DarthMaul, MaceWindu]
 let currentChar;
 let opponent;
+let originalAP;
+
+const attack = (player, enemy) => {
+
+    console.log('FIGHTING');
+    
+    enemy.HP -= player.AP;
+
+    $(`#${enemy.id}`).find('.hp').text(`Health: ${enemy.HP}`);
+
+    console.log(`Enemy HP: ${enemy.HP}`)
+
+    player.HP -= enemy.AP;
+
+    $(`#${player.id}`).find('.hp').text(`Health: ${player.HP}`);
+
+    console.log(`player HP: ${player.HP}`);
+
+    player.AP += originalAP;
+
+    $(`#${player.id}`).find('.ap').text(`Attack: ${player.AP}`);
+
+    console.log(`New Player AP: ` + player.AP);
+}
 
 $(document).ready(function() {
 
@@ -72,6 +96,12 @@ $(document).on("click", ".character", function() {
     if(!currentChar){
     currentChar = characters[this.id];
 
+    currentChar.id = this.id;
+
+    console.log(`player's id is ${currentChar.id}`);
+
+    originalAP = currentChar.AP;
+
     console.log(currentChar);
 
     $('#choice').append(this);
@@ -81,6 +111,10 @@ $(document).on("click", ".character", function() {
 
         console.log(opponent);
 
+        opponent.id = this.id;
+
+        console.log(`opponent's id is ${opponent.id}`);
+
         $('#opponent').append(this);
     }
 })
@@ -88,7 +122,9 @@ $(document).on("click", ".character", function() {
 $(document).on('click', 'button', function(e){
     e.preventDefault();
 
-    console.log('FIGHTING');
+    attack(currentChar,opponent);
 
-    
+    if(opponent.HP <= 0){
+        $('#banner').text(`${player.name} has defeated ${opponent.name}`);
+    }
 })

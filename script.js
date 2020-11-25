@@ -34,6 +34,7 @@ let characters = [Yoda, Palpatine, DarthMaul, MaceWindu]
 let currentChar;
 let opponent;
 let originalAP;
+let defeated = 0;
 
 const attack = (player, enemy) => {
 
@@ -107,6 +108,9 @@ $(document).on("click", ".character", function() {
     $('#choice').append(this);
 
     } else if(!opponent){
+
+        $('#banner').text('');
+
         opponent = characters[this.id];
 
         console.log(opponent);
@@ -124,6 +128,10 @@ $(document).on('click', 'button', function(e){
 
     attack(currentChar,opponent);
 
+    if(currentChar.HP <= 0){
+        $('#banner').text(`${currentChar.name} has perished! You have lost.`)
+    }
+
     if(opponent.HP <= 0){
         $('#banner').text(`${currentChar.name} has defeated ${opponent.name}`);
 
@@ -132,5 +140,11 @@ $(document).on('click', 'button', function(e){
         $('#graveyard').append(corpse);
 
         opponent = null;
+
+        defeated ++;
+    }
+
+    if(defeated === 3){
+        $('#banner').text('You have conquered all enemies.');
     }
 })

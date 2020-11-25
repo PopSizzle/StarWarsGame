@@ -47,3 +47,14 @@ button {
     position: fixed;
     left: 30%;
 }
+
+#graveyard {
+    width: 200px;
+    height: 100px;
+    color: white;
+    background-repeat: none;
+    background-size: cover;
+    position: fixed;
+    left: 700px;
+    top: 200px;
+}

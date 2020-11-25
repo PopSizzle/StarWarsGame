@@ -1,9 +1,8 @@
 class Fighter {
-    constructor(name, image, HP, AP, CA) {
+    constructor(name, image, HP, AP) {
         this.name = name;
         this.HP = HP;
         this.AP = AP;
-        this.CA = CA;
         this.image = image;
     }
 
@@ -14,21 +13,15 @@ class Fighter {
 
         this.AP += damage;
     }
-
-    counter = (attacker) => {
-        let damage = this.CA;
-
-        attacker.HP -= damage;
-    }
 }
 
-const Yoda = new Fighter("Yoda", "./Images/Yoda.jpg", 200, 12, 12);
+const Yoda = new Fighter("Yoda", "./Images/Yoda.jpg", 200, 24);
 
-const Palpatine = new Fighter("Palpatine", "./Images/Palpatine.jpg", 240, 8, 8);
+const Palpatine = new Fighter("Palpatine", "./Images/Palpatine.jpg", 240, 16);
 
-const DarthMaul = new Fighter("Darth Maul", "./Images/DarthMaulSmall.jpg", 160, 16, 16);
+const DarthMaul = new Fighter("Darth Maul", "./Images/DarthMaulSmall.jpg", 160, 32);
 
-const MaceWindu = new Fighter("Mace Windu", "./Images/Mace.png", 120, 20, 20);
+const MaceWindu = new Fighter("Mace Windu", "./Images/Mace.png", 120, 40);
 
 let characters = [Yoda, Palpatine, DarthMaul, MaceWindu]
 let currentChar;
@@ -130,9 +123,7 @@ $(document).on('click', 'button', function(e){
 
     if(currentChar.HP <= 0){
         $('#banner').text(`${currentChar.name} has perished! You have lost.`)
-    }
-
-    if(opponent.HP <= 0){
+    } else if(opponent.HP <= 0){
         $('#banner').text(`${currentChar.name} has defeated ${opponent.name}`);
 
         let corpse = $(`#${opponent.id}`);
@@ -147,4 +138,5 @@ $(document).on('click', 'button', function(e){
     if(defeated === 3){
         $('#banner').text('You have conquered all enemies.');
     }
+
 })

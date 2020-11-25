@@ -41,3 +41,9 @@ button {
     left: 450px;
     top: 100px;
 }
+
+#banner {
+    color: white;
+    position: fixed;
+    left: 30%;
+}

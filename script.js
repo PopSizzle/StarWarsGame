@@ -125,6 +125,12 @@ $(document).on('click', 'button', function(e){
     attack(currentChar,opponent);
 
     if(opponent.HP <= 0){
-        $('#banner').text(`${player.name} has defeated ${opponent.name}`);
+        $('#banner').text(`${currentChar.name} has defeated ${opponent.name}`);
+
+        let corpse = $(`#${opponent.id}`);
+
+        $('#graveyard').append(corpse);
+
+        opponent = null;
     }
 })
